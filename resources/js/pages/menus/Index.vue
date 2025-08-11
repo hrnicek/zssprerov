@@ -307,47 +307,51 @@ onUnmounted(() => {
 <template>
     <Head title="Jídelníčky"></Head>
     <AppLayout>
-        <AppContent>
-            <h3 class="mb-4 text-2xl font-bold text-brand-primary">Jídelníčky</h3>
-            <Card class="p-8">
-                <CardHeader class="pb-6">
-                    <p class="mb-6 text-gray-600">Zvolte pobočku a klikněte na datum pro zobrazení jídelníčku.</p>
+        <AppContent class="max-w-none px-0">
+            <div class="px-6 mb-3">
+                <h3 class="text-2xl font-bold text-brand-primary">Jídelníčky</h3>
+            </div>
+            <Card class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm p-4 overflow-hidden rounded-none">
+                <CardHeader class="pb-3">
+                    <p class="mb-4 text-gray-600">Zvolte pobočku a klikněte na datum pro zobrazení jídelníčku.</p>
 
-                    <div class="space-y-6">
-                        <!-- Establishment Select -->
-                        <div>
-                            <Select
-                                v-model="selectedEstablishment"
-                                :options="establishmentOptions"
-                                placeholder="Vyberte jídelnu"
-                                @update:modelValue="handleEstablishmentChange"
-                            />
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                        <!-- Left side: Establishment Select and School Type Buttons -->
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                            <div class="min-w-[200px]">
+                                <Select
+                                    v-model="selectedEstablishment"
+                                    :options="establishmentOptions"
+                                    placeholder="Vyberte jídelnu"
+                                    @update:modelValue="handleEstablishmentChange"
+                                />
+                            </div>
+
+                            <!-- School Type Buttons -->
+                            <div class="flex gap-2">
+                                <Button
+                                    type="button"
+                                    @click="selectedSchoolType = 'materska'"
+                                    :variant="selectedSchoolType === 'materska' ? 'default' : 'outline'"
+                                    class="rounded-full text-xs px-3 py-1"
+                                    size="sm"
+                                >
+                                    Mateřská škola
+                                </Button>
+                                <Button
+                                    type="button"
+                                    @click="selectedSchoolType = 'zakladni'"
+                                    :variant="selectedSchoolType === 'zakladni' ? 'default' : 'outline'"
+                                    class="rounded-full text-xs px-3 py-1"
+                                    size="sm"
+                                >
+                                    Základní škola
+                                </Button>
+                            </div>
                         </div>
 
-                        <!-- School Type Buttons -->
-                        <div class="flex flex-wrap gap-3">
-                            <Button
-                                type="button"
-                                @click="selectedSchoolType = 'materska'"
-                                :variant="selectedSchoolType === 'materska' ? 'default' : 'outline'"
-                                class="rounded-full"
-                            >
-                                Mateřská škola
-                            </Button>
-                            <Button
-                                type="button"
-                                @click="selectedSchoolType = 'zakladni'"
-                                :variant="selectedSchoolType === 'zakladni' ? 'default' : 'outline'"
-                                class="rounded-full"
-                            >
-                                Základní škola
-                            </Button>
-                        </div>
-                    </div>
-                </CardHeader>
-
-                <!-- Sticky Date Selector inside Card -->
-                <div v-if="selectedEstablishment" class="px-6">
+                        <!-- Right side: Date Selector -->
+                        <div v-if="selectedEstablishment" class="flex-1 lg:max-w-2xl">
                     <div class="max-w-full overflow-x-auto">
                         <div class="flex min-w-max items-center gap-1 pb-2">
                             <template v-for="(date, index) in calendarDates" :key="date.dateString">
