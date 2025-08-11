@@ -3,24 +3,23 @@ import AppContent from '@/components/AppContent.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
-
 const breadcrumbs = ref([
     {
         title: 'Úvod',
         href: '/',
     },
     {
-        title: 'Kariéra',
+        title: 'Dokumenty',
     },
 ]);
 </script>
 <template>
-    <Head title="Volné pracovní pozice"></Head>
+    <Head title="Dokumenty ke satžení"></Head>
 
     <AppLayout>
         <AppContent :breadcrumbs="breadcrumbs">
             <div>
-                <h1>Volné pracovní pozice</h1>
+                <h1>Dokumenty</h1>
             </div>
         </AppContent>
     </AppLayout>

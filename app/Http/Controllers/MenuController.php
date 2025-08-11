@@ -66,6 +66,8 @@ class MenuController extends Controller
                 3 => 'Středa',
                 4 => 'Čtvrtek',
                 5 => 'Pátek',
+                6 => 'Sobota',
+                7 => 'Neděle',
             ];
 
             foreach ($xml->den as $day) {

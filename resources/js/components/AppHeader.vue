@@ -22,42 +22,42 @@ import { Link } from '@inertiajs/vue3';
                                 <li>
                                     <Link
                                         :href="route('about')"
-                                        class="rounded-xl px-4 py-2 text-lg font-bold text-brand-dark-blue hover:bg-brand-primary hover:text-white"
+                                        class="rounded-full px-4 py-2.5 text-lg font-bold text-brand-dark-blue hover:bg-brand-primary hover:text-white"
                                         >O nás</Link
                                     >
                                 </li>
                                 <li>
                                     <Link
                                         :href="route('menu')"
-                                        class="rounded-xl px-4 py-2 text-lg font-bold text-brand-dark-blue hover:bg-brand-primary hover:text-white"
+                                        class="rounded-full px-4 py-2.5 text-lg font-bold text-brand-dark-blue hover:bg-brand-primary hover:text-white"
                                         >Jídelníčky</Link
                                     >
                                 </li>
                                 <li>
                                     <Link
                                         :href="route('documents')"
-                                        class="rounded-xl px-4 py-2 text-lg font-bold text-brand-dark-blue hover:bg-brand-primary hover:text-white"
+                                        class="rounded-full px-4 py-2.5 text-lg font-bold text-brand-dark-blue hover:bg-brand-primary hover:text-white"
                                         >Dokumenty</Link
                                     >
                                 </li>
                                 <li>
                                     <Link
                                         :href="route('consumers')"
-                                        class="rounded-xl px-4 py-2 text-lg font-bold text-brand-dark-blue hover:bg-brand-primary hover:text-white"
+                                        class="rounded-full px-4 py-2.5 text-lg font-bold text-brand-dark-blue hover:bg-brand-primary hover:text-white"
                                         >Strávnici</Link
                                     >
                                 </li>
                                 <li>
                                     <Link
                                         :href="route('careers')"
-                                        class="rounded-xl px-4 py-2 text-lg font-bold text-brand-dark-blue hover:bg-brand-primary hover:text-white"
+                                        class="rounded-full px-4 py-2.5 text-lg font-bold text-brand-dark-blue hover:bg-brand-primary hover:text-white"
                                         >Kariéra</Link
                                     >
                                 </li>
                                 <li>
                                     <Link
                                         :href="route('contact')"
-                                        class="rounded-xl px-4 py-2 text-lg font-bold text-brand-dark-blue hover:bg-brand-primary hover:text-white"
+                                        class="rounded-full px-4 py-2.5 text-lg font-bold text-brand-dark-blue hover:bg-brand-primary hover:text-white"
                                         >Kontakt</Link
                                     >
                                 </li>

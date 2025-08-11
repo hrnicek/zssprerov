@@ -4,6 +4,7 @@ import DateSelector from '@/components/DateSelector.vue';
 import MenuTable from '@/components/MenuTable.vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Select } from '@/components/ui/select';
 import { generateCalendarDates } from '@/composables/useCalendar.js';
 import { useMenuNavigation } from '@/composables/useMenuNavigation.js';
@@ -42,6 +43,7 @@ const selectedEstablishment = ref(props.selectedEstablishment || '');
 const selectedDate = ref('');
 const selectedSchoolType = ref('materska');
 const showMenu = ref(!!props.menuData && !!selectedEstablishment.value);
+const isAllergenDialogOpen = ref(false);
 
 // Composables
 const { isScrolling, scrollToDate, selectDate, setupScrollDetection, cleanupScrollDetection } = useMenuScroll();
@@ -177,6 +179,97 @@ const breadcrumbs = ref([
                 <div class="mb-6 flex items-center justify-between">
                     <h3 class="text-lg font-semibold text-gray-900">Jídelníček</h3>
                     <div class="flex gap-3">
+                        <Dialog v-model:open="isAllergenDialogOpen">
+                            <DialogTrigger as-child>
+                                <Button variant="outline" size="sm" class="flex items-center gap-2">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                        />
+                                    </svg>
+                                    Seznam alergenů
+                                </Button>
+                            </DialogTrigger>
+                            <DialogContent class="max-w-2xl">
+                                <DialogHeader>
+                                    <DialogTitle>Seznam alergenů</DialogTitle>
+                                </DialogHeader>
+                                <div class="grid gap-4 py-4">
+                                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                                        <div class="space-y-3">
+                                            <div class="flex items-start gap-3">
+                                                <span class="min-w-[2.5rem] rounded bg-gray-100 px-2 py-1 text-center text-sm font-semibold"
+                                                    >01a</span
+                                                >
+                                                <span class="text-sm">Obiloviny obsahující lepek</span>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <span class="min-w-[2.5rem] rounded bg-gray-100 px-2 py-1 text-center text-sm font-semibold"
+                                                    >01b</span
+                                                >
+                                                <span class="text-sm">Obiloviny - pšenice</span>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <span class="min-w-[2.5rem] rounded bg-gray-100 px-2 py-1 text-center text-sm font-semibold"
+                                                    >01c</span
+                                                >
+                                                <span class="text-sm">Obiloviny - žito</span>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <span class="min-w-[2.5rem] rounded bg-gray-100 px-2 py-1 text-center text-sm font-semibold">03</span>
+                                                <span class="text-sm">Obiloviny - ječmen</span>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <span class="min-w-[2.5rem] rounded bg-gray-100 px-2 py-1 text-center text-sm font-semibold">04</span>
+                                                <span class="text-sm">Vejce</span>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <span class="min-w-[2.5rem] rounded bg-gray-100 px-2 py-1 text-center text-sm font-semibold">06</span>
+                                                <span class="text-sm">Ryby</span>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-3">
+                                            <div class="flex items-start gap-3">
+                                                <span class="min-w-[2.5rem] rounded bg-gray-100 px-2 py-1 text-center text-sm font-semibold">07</span>
+                                                <span class="text-sm">Sójové boby (sója)</span>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <span class="min-w-[2.5rem] rounded bg-gray-100 px-2 py-1 text-center text-sm font-semibold">08</span>
+                                                <span class="text-sm">Mléko</span>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <span class="min-w-[2.5rem] rounded bg-gray-100 px-2 py-1 text-center text-sm font-semibold">09</span>
+                                                <span class="text-sm">Ořechy, mandle, pistácie</span>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <span class="min-w-[2.5rem] rounded bg-gray-100 px-2 py-1 text-center text-sm font-semibold">10</span>
+                                                <span class="text-sm">Celer</span>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <span class="min-w-[2.5rem] rounded bg-gray-100 px-2 py-1 text-center text-sm font-semibold">11</span>
+                                                <span class="text-sm">Hořčice</span>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <span class="min-w-[2.5rem] rounded bg-gray-100 px-2 py-1 text-center text-sm font-semibold">12</span>
+                                                <span class="text-sm">Sezamová semena</span>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <span class="min-w-[2.5rem] rounded bg-gray-100 px-2 py-1 text-center text-sm font-semibold">J</span>
+                                                <span class="text-sm">Oxid siřičitý a siřičitany</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-6 border-t border-gray-200 pt-4">
+                                        <p class="text-left text-xs text-gray-600">
+                                            Změna jídelního lístku a alergenů vyhrazena. Pokrm je určen k přímé spotřebě
+                                        </p>
+                                    </div>
+                                </div>
+                            </DialogContent>
+                        </Dialog>
                         <Button variant="outline" size="sm" class="flex items-center gap-2">
                             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path

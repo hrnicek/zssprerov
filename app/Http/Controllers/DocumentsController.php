@@ -6,6 +6,6 @@ class DocumentsController extends Controller
 {
     public function index()
     {
-        return inertia('Documents');
+        return inertia('documents/Index');
     }
 }
