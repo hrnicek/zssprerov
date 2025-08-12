@@ -2,7 +2,7 @@
 import { Link } from '@inertiajs/vue3';
 </script>
 <template>
-    <footer class="mt-16 bg-brand-dark-blue pt-12 pb-8 text-white">
+    <footer class="mt-16 bg-brand-dark-blue pt-12 pb-8 text-white print:hidden">
         <div class="container mx-auto">
             <div class="grid grid-cols-12">
                 <div>

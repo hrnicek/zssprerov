@@ -124,8 +124,7 @@ const breadcrumbs = ref([
     <Head title="Jídelníčky"></Head>
     <AppLayout>
         <AppContent :breadcrumbs="breadcrumbs">
-            <h3 class="mb-4 text-2xl font-bold text-brand-primary">Jídelníčky</h3>
-
+            <h1 class="mb-4 text-2xl font-bold text-brand-primary">Jídelníčky</h1>
             <Card>
                 <CardHeader class="p-4">
                     <p class="mb-4 text-gray-600">Zvolte pobočku a klikněte na datum pro zobrazení jídelníčku.</p>
@@ -179,6 +178,22 @@ const breadcrumbs = ref([
                 <div class="mb-6 flex items-center justify-between">
                     <h3 class="text-lg font-semibold text-gray-900">Jídelníček</h3>
                     <div class="flex gap-3">
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            class="flex items-center gap-2"
+                            @click="$inertia.visit(`/jidelnicky/tisk?jidelna=${selectedEstablishment}`)"
+                        >
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+                                />
+                            </svg>
+                            Tisknout
+                        </Button>
                         <Dialog v-model:open="isAllergenDialogOpen">
                             <DialogTrigger as-child>
                                 <Button variant="outline" size="sm" class="flex items-center gap-2">

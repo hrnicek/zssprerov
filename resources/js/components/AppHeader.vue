@@ -3,7 +3,7 @@ import Button from '@/components/ui/button/Button.vue';
 import { Link } from '@inertiajs/vue3';
 </script>
 <template>
-    <header>
+    <header class="print:hidden">
         <div class="container mx-auto border-b-2 border-brand-beige px-4">
             <div class="flex items-end justify-between bg-white py-6">
                 <div>
