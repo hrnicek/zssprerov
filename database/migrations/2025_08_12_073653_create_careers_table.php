@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Establishment;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('documents', function (Blueprint $table) {
+        Schema::create('careers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignIdFor(Establishment::class)->nullable();
-            $table->integer('order_column')->nullable();
-            $table->boolean('is_visible')->default(true);
-            $table->boolean('on_home')->default(false);
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->longText('content')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('careers');
     }
 };
