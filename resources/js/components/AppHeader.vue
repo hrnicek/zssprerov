@@ -14,8 +14,10 @@ import { Link } from '@inertiajs/vue3';
                 <div class="flex justify-end">
                     <div>
                         <div class="mb-8 flex justify-end space-x-4">
-                            <Button as="a" href="https://app.strava.cz/zalozit-ucet?jidelna" target="_blank" type="primary"> Nový strávník </Button>
-                            <Button as="a" href="https://strava.cz/" target="_blank" type="primary"> Strava.cz </Button>
+                            <Button variant="outline" as="a" href="https://app.strava.cz/zalozit-ucet?jidelna" target="_blank" type="primary">
+                                Nový strávník
+                            </Button>
+                            <Button variant="outline" as="a" href="https://strava.cz/" target="_blank" type="primary"> Strava.cz </Button>
                         </div>
                         <nav role="navigation" class="hidden lg:flex">
                             <ul class="flex space-x-6">

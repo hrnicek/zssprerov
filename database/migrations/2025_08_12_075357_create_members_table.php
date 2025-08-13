@@ -20,6 +20,13 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('establishment_member', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('establishment_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('member_id')->constrained()->cascadeOnDelete();
+            $table->timestamps();
+        });
     }
 
     /**
