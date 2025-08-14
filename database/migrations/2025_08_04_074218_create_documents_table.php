@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('order_column')->nullable();
             $table->boolean('is_visible')->default(true);
             $table->boolean('on_home')->default(false);
+            $table->boolean('on_consumers')->nullable();
             $table->timestamps();
         });
     }

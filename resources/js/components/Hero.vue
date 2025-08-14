@@ -9,6 +9,7 @@ import CardHeader from './ui/card/CardHeader.vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Badge from './ui/badge/Badge.vue';
 
 const props = defineProps({
     posts: {
@@ -63,6 +64,7 @@ const buttonText = 'Více';
                 >
                     <SwiperSlide v-for="item in newsItems" :key="item.id">
                         <Card class="w-full px-4 backdrop-blur-sm">
+                            <Badge variant="secondary"> Aktuálně </Badge>
                             <CardHeader class="pb-2">
                                 <div class="bg-brand-brick inline-block rounded-sm px-2 py-1 text-xs font-medium text-white">{{ item.badge }}</div>
                                 <CardTitle class="mt-2 text-xl font-bold text-brand-primary">{{ item.title }}</CardTitle>

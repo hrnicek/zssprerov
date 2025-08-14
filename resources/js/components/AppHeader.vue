@@ -49,6 +49,13 @@ import { Link } from '@inertiajs/vue3';
                                         >Strávnici</Link
                                     >
                                 </li>
+                                <!-- <li>
+                                    <Link
+                                        :href="route('pricing')"
+                                        class="rounded-full px-4 py-2.5 text-lg font-bold text-brand-dark-blue hover:bg-brand-primary hover:text-white"
+                                        >Ceník</Link
+                                    >
+                                </li> -->
                                 <li>
                                     <Link
                                         :href="route('careers')"

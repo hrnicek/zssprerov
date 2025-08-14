@@ -155,7 +155,8 @@ const toggleFaq = (id: number) => {
                     <p class="text-base leading-relaxed">
                         Přihlášení ke stravování je jednoduché. Stačí vyplnit přihlášku, zde na webu nebo přímo v jídelně. Při registraci obdržíte
                         stravovací čip (nebo aktivujete ISIC kartu) a zvolíte způsob platby – inkasem z účtu nebo hotově. Po registraci získáte
-                        přístup do systému Strava.cz, kde si můžete snadno objednávat a odhlašovat obědy.
+                        přístup do systému <a href="https://app.strava.cz/zalozit-ucet?jidelna" target="_blank" type="primary">Strava.cz</a> kde si
+                        můžete snadno objednávat a odhlašovat obědy.
                     </p>
                     <div class="mt-12 flex space-x-4">
                         <Button as="a" href="https://app.strava.cz/zalozit-ucet?jidelna" target="_blank" type="primary"> Přihlásit se online </Button>
@@ -167,8 +168,9 @@ const toggleFaq = (id: number) => {
                 <div>
                     <h2 class="mb-6 text-xl font-bold text-brand-primary lg:text-2xl">Jak odhlásit oběd</h2>
                     <p class="text-base leading-relaxed">
-                        Oběd je možné odhlásit nejpozději den předem do 14:00 – online přes systém Strava.cz, telefonicky nebo osobně na pokladně
-                        jídelny. V případě nemoci je možné si první den nepřítomnosti oběd vyzvednout do jídlonosiče.
+                        Oběd je možné odhlásit nejpozději den předem do 14:00 – online přes systém
+                        <a href="https://app.strava.cz/" target="_blank" type="primary">Strava.cz</a>, telefonicky nebo osobně na pokladně jídelny. V
+                        případě nemoci je možné si první den nepřítomnosti oběd vyzvednout do jídlonosiče.
                     </p>
                 </div>
 

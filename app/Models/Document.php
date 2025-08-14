@@ -22,6 +22,7 @@ class Document extends Model implements HasMedia, Sortable
 
         'order_column',
         'is_visible',
+        'on_consumers',
         'on_home',
     ];
 
@@ -30,6 +31,7 @@ class Document extends Model implements HasMedia, Sortable
         return [
             'is_visible' => 'boolean',
             'on_home' => 'boolean',
+            'on_consumers' => 'boolean',
         ];
     }
 

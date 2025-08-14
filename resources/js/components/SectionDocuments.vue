@@ -7,6 +7,10 @@ const props = defineProps({
         type: Array,
         default: () => [],
     },
+    showDesc: {
+        type: Boolean,
+        default: true,
+    },
 });
 
 const download = (media) => {
@@ -16,7 +20,7 @@ const download = (media) => {
 <template>
     <Section title="Dokumenty" class="py-16">
         <div>
-            <div>
+            <div v-if="showDesc">
                 <p class="max-w-3xl">
                     Hledáte přihlášku ke stravování, aktuální ceník nebo informace k platbám? Vše potřebné najdete přehledně na jednom místě.
                     Připravili jsme pro vás ke stažení dokumenty pro nové i stávající strávníky, včetně informací k dietám či provozním řádům.
