@@ -11,7 +11,7 @@ export function useMenuNavigation() {
      * @param {string} selectedDate - Selected date in ISO format
      */
     const fetchMenuForEstablishment = (establishmentValue, selectedDate) => {
-        if (!establishmentValue) return;
+        if (establishmentValue === '' || establishmentValue === null || establishmentValue === undefined) return;
 
         // Use selected date or today's date as fallback
         const dateToSend = selectedDate || new Date().toISOString().split('T')[0];
@@ -22,7 +22,7 @@ export function useMenuNavigation() {
                 jidelna: establishmentValue.toString(),
                 datum: dateToSend,
             },
-            except: ['establishment'],
+            except: ['establishments'],
             preserveState: true,
             preserveScroll: true,
         });

@@ -39,7 +39,7 @@ class MenuController extends Controller
         return inertia('menus/Index', [
             'establishments' => $establishments,
             'menuData' => $menuData,
-            'selectedEstablishment' => $request->get('jidelna'),
+            'selectedEstablishment' => (int) $request->get('jidelna'),
             'selectedDates' => $request->get('dates', []),
         ]);
     }

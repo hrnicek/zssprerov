@@ -11,7 +11,7 @@ import { useMenuNavigation } from '@/composables/useMenuNavigation.js';
 import { useMenuScroll } from '@/composables/useMenuScroll.js';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Head } from '@inertiajs/vue3';
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 
 const props = defineProps({
     establishments: {
@@ -32,12 +32,6 @@ const props = defineProps({
     },
 });
 
-watch(
-    () => props.selectedEstablishment,
-    (newValue) => {
-        selectedEstablishment.value = newValue;
-    },
-);
 // Generate calendar data
 const calendarWeeks = generateCalendarDates();
 const calendarDates = computed(() => {
@@ -45,7 +39,7 @@ const calendarDates = computed(() => {
 });
 
 // State management
-const selectedEstablishment = ref(props.selectedEstablishment || '');
+const selectedEstablishment = ref(props.selectedEstablishment ?? '');
 const selectedDate = ref('');
 const showMenu = ref(!!props.menuData && !!selectedEstablishment.value);
 const isAllergenDialogOpen = ref(false);
@@ -79,7 +73,7 @@ const handleDateSelect = (dateString) => {
 // Lifecycle hooks
 onMounted(() => {
     // Initialize with current data
-    if (props.selectedEstablishment && props.menuData) {
+    if (props.selectedEstablishment != null && props.menuData) {
         selectedEstablishment.value = props.selectedEstablishment;
         showMenu.value = true;
         // Set today as default selected date if no hash is present
@@ -133,7 +127,6 @@ const breadcrumbs = ref([
             <Card>
                 <CardHeader class="p-4">
                     <p class="mb-4 text-gray-600">Zvolte pobočku a klikněte na datum pro zobrazení jídelníčku.</p>
-                    {{ props.selectedEstablishment }}
                     <div class="space-y-4">
                         <!-- Establishment Select -->
                         <div>

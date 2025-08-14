@@ -206,6 +206,16 @@ const toggleFaq = (id: number) => {
                         případě zájmu o dietní stravování nás prosím kontaktujte – rádi vám poskytneme podrobnosti k možnostem, podmínkám i postupu
                         přihlášení.
                     </p>
+                    <div class="mt-12">
+                        <Button
+                            as="a"
+                            href="/files/Přihláška k dietnímu stravování(dieta bez přidaného lepku) součástí přihlášky potvrzení od lékaře.pdf"
+                            target="_blank"
+                            type="primary"
+                        >
+                            Přihlaška - dokument
+                        </Button>
+                    </div>
                 </div>
 
                 <!-- FAQ Section -->
