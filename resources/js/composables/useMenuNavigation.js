@@ -20,7 +20,6 @@ export function useMenuNavigation() {
             method: 'get',
             data: {
                 jidelna: establishmentValue.toString(),
-                datum: dateToSend,
             },
             except: ['establishments'],
             preserveState: true,
