@@ -23,7 +23,16 @@ class Establishment extends Model implements HasMedia
         'email',
         'latitude',
         'longitude',
+        'is_external',
+        'external_link',
     ];
+
+    public function casts(): array
+    {
+        return [
+            'is_external' => 'boolean',
+        ];
+    }
 
     public function members(): BelongsToMany
     {

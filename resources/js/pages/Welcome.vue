@@ -11,17 +11,32 @@ import SectionQuickOption from '@/components/SectionQuickOption.vue';
 
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Head } from '@inertiajs/vue3';
+
+const props = defineProps({
+    establishments: {
+        type: Array,
+        default: () => [],
+    },
+    posts: {
+        type: Array,
+        default: () => [],
+    },
+    documents: {
+        type: Array,
+        default: () => [],
+    },
+});
 </script>
 
 <template>
     <Head title="Úvod"></Head>
     <AppLayout>
-        <Hero />
+        <Hero :posts="posts" />
         <SectionQuickOption />
         <SectionAbout />
         <SectionConsumers />
-        <SectionMenu />
-        <SectionDocuments />
+        <SectionMenu :establishments="props.establishments" />
+        <SectionDocuments :documents="documents" />
         <SectionCareers />
         <SectionMap />
     </AppLayout>

@@ -209,7 +209,7 @@ const toggleFaq = (id: number) => {
                 </div>
 
                 <!-- FAQ Section -->
-                <div>
+                <div id="faq">
                     <h2 class="mb-6 text-2xl font-bold text-brand-primary">Často kladené otázky</h2>
                     <div class="space-y-4">
                         <div v-for="item in faqItems" :key="item.id" class="border-b border-gray-200 pb-4">

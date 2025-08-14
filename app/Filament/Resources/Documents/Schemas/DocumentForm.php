@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Documents\Schemas;
 
+use App\Models\Establishment;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -18,21 +20,20 @@ class DocumentForm
                     TextInput::make('name')
                         ->label('Název')
                         ->required(),
-                    TextInput::make('establishment_id')
+                    Select::make('establishment_id')
                         ->label('ID zařízení')
-                        ->numeric(),
+                        ->options(Establishment::pluck('name', 'id')),
+
                     Toggle::make('is_visible')
                         ->label('Je viditelný')
                         ->required(),
                     Toggle::make('on_home')
                         ->label('Na domovské stránce')
                         ->required(),
-                    SpatieMediaLibraryFileUpload::make('file')
-                        ->label('Soubor')
+                    SpatieMediaLibraryFileUpload::make('avatar')
                         ->required()
-                        ->disk('public')
-                        ->directory('documents')
-                        ->collection('document'),
+                        ->collection('documents'),
+
                 ]),
 
             ]);

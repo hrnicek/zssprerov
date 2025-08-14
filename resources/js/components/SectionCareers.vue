@@ -12,8 +12,8 @@ import Section from './Section.vue';
                 </p>
             </div>
             <div class="flex items-center space-x-4">
-                <Button> Aktuální otevřené pozice </Button>
-                <Button> Kontakty </Button>
+                <Button as="a" href="/kariera"> Aktuální otevřené pozice </Button>
+                <Button variant="outline" as="a" href="/kontakt"> Kontakty </Button>
             </div>
         </div>
     </Section>

@@ -48,8 +48,11 @@ import { Link } from '@inertiajs/vue3';
                     </div>
                 </div>
             </div>
-            <div class="mt-8 text-brand-light-blue">
+            <div class="mt-12 text-brand-light-blue text-sm flex justify-between">
                 <p>2025 © Zařízení školního stravování Přerov • Všechna práva vyhrazena</p>
+                <div>
+                    <a href="/files/Ochrana oznamovatelů ZŠS Přerov.pdf" class="hover:text-white" target="_blank">Ochrana oznamovatelů ZŠS Přerov</a>
+                </div>
             </div>
         </div>
     </footer>

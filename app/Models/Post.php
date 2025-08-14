@@ -24,9 +24,16 @@ class Post extends Model implements HasMedia
         'published_at',
     ];
 
+    public function scopeActive($query)
+    {
+        return $query->where('is_visible', true)
+            ->where('published_at', '<=', now());
+    }
+
     public function casts(): array
     {
         return [
+            'is_visible' => 'boolean',
             'published_at' => 'datetime',
         ];
     }

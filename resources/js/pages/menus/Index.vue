@@ -11,7 +11,7 @@ import { useMenuNavigation } from '@/composables/useMenuNavigation.js';
 import { useMenuScroll } from '@/composables/useMenuScroll.js';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Head } from '@inertiajs/vue3';
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 
 const props = defineProps({
     establishments: {
@@ -32,6 +32,12 @@ const props = defineProps({
     },
 });
 
+watch(
+    () => props.selectedEstablishment,
+    (newValue) => {
+        selectedEstablishment.value = newValue;
+    },
+);
 // Generate calendar data
 const calendarWeeks = generateCalendarDates();
 const calendarDates = computed(() => {
@@ -41,7 +47,6 @@ const calendarDates = computed(() => {
 // State management
 const selectedEstablishment = ref(props.selectedEstablishment || '');
 const selectedDate = ref('');
-const selectedSchoolType = ref('materska');
 const showMenu = ref(!!props.menuData && !!selectedEstablishment.value);
 const isAllergenDialogOpen = ref(false);
 
@@ -128,7 +133,7 @@ const breadcrumbs = ref([
             <Card>
                 <CardHeader class="p-4">
                     <p class="mb-4 text-gray-600">Zvolte pobočku a klikněte na datum pro zobrazení jídelníčku.</p>
-
+                    {{ props.selectedEstablishment }}
                     <div class="space-y-4">
                         <!-- Establishment Select -->
                         <div>
@@ -138,26 +143,6 @@ const breadcrumbs = ref([
                                 placeholder="Vyberte jídelnu"
                                 @update:modelValue="handleEstablishmentChange"
                             />
-                        </div>
-
-                        <!-- School Type Buttons -->
-                        <div class="flex flex-wrap gap-3">
-                            <Button
-                                type="button"
-                                @click="selectedSchoolType = 'materska'"
-                                :variant="selectedSchoolType === 'materska' ? 'default' : 'outline'"
-                                class="rounded-full"
-                            >
-                                Mateřská škola
-                            </Button>
-                            <Button
-                                type="button"
-                                @click="selectedSchoolType = 'zakladni'"
-                                :variant="selectedSchoolType === 'zakladni' ? 'default' : 'outline'"
-                                class="rounded-full"
-                            >
-                                Základní škola
-                            </Button>
                         </div>
                     </div>
                 </CardHeader>
@@ -178,22 +163,6 @@ const breadcrumbs = ref([
                 <div class="mb-6 flex items-center justify-between">
                     <h3 class="text-lg font-semibold text-gray-900">Jídelníček</h3>
                     <div class="flex gap-3">
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            class="flex items-center gap-2"
-                            @click="$inertia.visit(`/jidelnicky/tisk?jidelna=${selectedEstablishment}`)"
-                        >
-                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-                                />
-                            </svg>
-                            Tisknout
-                        </Button>
                         <Dialog v-model:open="isAllergenDialogOpen">
                             <DialogTrigger as-child>
                                 <Button variant="outline" size="sm" class="flex items-center gap-2">
@@ -285,18 +254,12 @@ const breadcrumbs = ref([
                                 </div>
                             </DialogContent>
                         </Dialog>
-                        <Button variant="outline" size="sm" class="flex items-center gap-2">
-                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                                />
-                            </svg>
-                            Stáhnout PDF
-                        </Button>
-                        <Button variant="outline" size="sm" class="flex items-center gap-2">
+                        <Button
+                            @click="$inertia.visit(`/jidelnicky/tisk?jidelna=${selectedEstablishment}`)"
+                            variant="outline"
+                            size="sm"
+                            class="flex items-center gap-2"
+                        >
                             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path
                                     stroke-linecap="round"

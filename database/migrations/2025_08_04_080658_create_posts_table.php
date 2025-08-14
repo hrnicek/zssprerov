@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('perex')->nullable();
             $table->text('content')->nullable();
             $table->datetime('published_at')->nullable();
+            $table->boolean('is_visible')->default(false);
             $table->timestamps();
         });
     }

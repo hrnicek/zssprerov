@@ -18,9 +18,12 @@ return new class extends Migration
             $table->string('postal_code')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->longText('about')->nullable();
             $table->string('longitude')->nullable();
             $table->string('latitude')->nullable();
             $table->integer('order_column')->nullable();
+            $table->boolean('is_external')->default(false);
+            $table->string('external_link')->nullable();
             $table->timestamps();
         });
     }

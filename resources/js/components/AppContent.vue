@@ -13,7 +13,7 @@ withDefaults(
 </script>
 
 <template>
-    <div class="py-6">
+    <div class="min-h-[300px] py-6 lg:min-h-[600px]">
         <div class="mb-8">
             <div class="container mx-auto px-4">
                 <template v-if="breadcrumbs && breadcrumbs.length > 0">

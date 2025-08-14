@@ -14,14 +14,12 @@ class DocumentsTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->reorderable('order_column')
+            ->defaultSort('order_column')
             ->columns([
                 TextColumn::make('name')
                     ->label('Název')
                     ->searchable(),
-                TextColumn::make('establishment_id')
-                    ->label('ID zařízení')
-                    ->numeric()
-                    ->sortable(),
                 TextColumn::make('order_column')
                     ->label('Pořadí')
                     ->numeric()

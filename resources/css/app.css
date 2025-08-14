@@ -136,4 +136,7 @@
         @apply bg-background text-foreground;
         font-family: var(--font-sans);
     }
+    button {
+        @apply hover:cursor-pointer;
+    }
 }

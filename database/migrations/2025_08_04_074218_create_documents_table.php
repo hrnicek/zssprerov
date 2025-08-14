@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('group')->nullable();
             $table->foreignIdFor(Establishment::class)->nullable();
             $table->integer('order_column')->nullable();
             $table->boolean('is_visible')->default(true);

@@ -10,6 +10,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+const props = defineProps({
+    posts: {
+        type: Array,
+        default: () => [],
+    },
+});
+
 // Sample news data (replace with actual data from your backend)
 const newsItems = [
     {
@@ -38,10 +45,10 @@ const buttonText = 'Více';
 <template>
     <div class="my-8">
         <div
-            class="relative container mx-auto h-[450px] object-cover object-center"
+            class="relative container mx-auto h-[500px] min-h-[500px] object-cover object-center"
             style="background-image: url('/img/hero-bg.jpg'); background-size: cover; background-position: center"
         >
-            <div class="absolute top-1/2 right-0 left-0 flex -translate-y-1/2 transform justify-end px-4 md:px-8 lg:px-12">
+            <div class="absolute right-[10%] -bottom-[25%]">
                 <Swiper
                     :modules="[Autoplay, Pagination, Navigation]"
                     :slides-per-view="1"
@@ -50,21 +57,18 @@ const buttonText = 'Více';
                         delay: 5000,
                         disableOnInteraction: false,
                     }"
-                    :pagination="{
-                        clickable: true,
-                        dynamicBullets: true,
-                    }"
-                    :navigation="true"
-                    class="w-full max-w-[400px]"
+                    :pagination="false"
+                    :navigation="false"
+                    class="min-h-[300px] w-full max-w-[400px]"
                 >
                     <SwiperSlide v-for="item in newsItems" :key="item.id">
-                        <Card class="card-news w-full bg-white/95 shadow-lg backdrop-blur-sm">
+                        <Card class="w-full px-4 backdrop-blur-sm">
                             <CardHeader class="pb-2">
                                 <div class="bg-brand-brick inline-block rounded-sm px-2 py-1 text-xs font-medium text-white">{{ item.badge }}</div>
-                                <CardTitle class="mt-2 text-xl font-bold text-brand-dark-blue">{{ item.title }}</CardTitle>
+                                <CardTitle class="mt-2 text-xl font-bold text-brand-primary">{{ item.title }}</CardTitle>
                             </CardHeader>
                             <CardContent class="pt-2">
-                                <Button variant="outline" class="btn-more border-brand-brick text-brand-brick hover:bg-brand-brick hover:text-white">{{ buttonText }}</Button>
+                                <Button variant="outline">{{ buttonText }}</Button>
                             </CardContent>
                         </Card>
                     </SwiperSlide>
